@@ -83,7 +83,7 @@ Java线程状态有6中：
 ![](../assets/Java线程/17273bf1954d8512.png)  
 类似于 `key - value`  结构,  `ThreadLocal` 为 `key`, `value` 为要保存的变量.
 
-![](https://user-gold-cdn.xitu.io/2020/6/2/17273c12c6791147?w=492&h=196&f=png&s=10733)
+![](../assets/Java线程/17273c12c6791147.png)
 
 ![](../assets/Java线程/17273c1b7a313550.png)
 
