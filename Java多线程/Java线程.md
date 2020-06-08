@@ -74,18 +74,18 @@ Java线程状态有6中：
     返回该线程局部变量的初始值，该方法是一个`protected`的方法，显然是为了让子类覆盖而设计的。这个方法是一个延迟调用方法，在线程第1次调用`get()`或`set(Object)`时才执行，并且仅执行1次。`ThreadLocal`中的为空实现, 直接返回的 `null`  
 
 
-![](../assets/Java线程/17273b7321a83071.png)
+![17273b7321a83071](../assets/Java线程/17273b7321a83071.png)
 
-![](../assets/Java线程/17273b7c520693a4.png)
+![17273b7c520693a4](../assets/Java线程/17273b7c520693a4.png)
 
 在 `get()` 方法里, 会先获取前线程，然后调用`getMap`方法获取对应的`ThreadLocalMap`，`ThreadLocalMap`是`ThreadLocal`的静态内部类,`ThreadLocalMap`  内部是由一个  `Entry[]` 数组来保存数据, `Entry` 为 `ThreadLocalMap` 的静态内部类, 
 
-![](../assets/Java线程/17273bf1954d8512.png)  
+![17273bf1954d8512](../assets/Java线程/17273bf1954d8512.png)  
 类似于 `key - value`  结构,  `ThreadLocal` 为 `key`, `value` 为要保存的变量.
 
-![](../assets/Java线程/17273c12c6791147.png)
+![17273c12c6791147](../assets/Java线程/17273c12c6791147.png)
 
-![](../assets/Java线程/17273c1b7a313550.png)
+![17273c1b7a313550](../assets/Java线程/17273c1b7a313550.png)
 
 `getEntry` 为获取 `threadlocal` 对应的变量, set 为更新对应 `threadlocal` 的值.
 `ThreadLocal.get()` 方法里就是获取到当前 线程的 `ThreadLocalMap`, 然后通过 `threadLocal` 获取到对应的 `entry`的值返回.
@@ -98,7 +98,7 @@ Java使用锁和自旋CAS实现原子操作.
 `CAS`操作过程都包含三个运算符：一个内存地址`V`，一个期望的值`A`和一个新值`B`，操作的时候如果这个地址上存放的值等于这个期望的值`A`，则将地址上的值赋为新值`B`，否则不做任何操作。  
 `CAS`的基本思路就是，如果这个地址上的值和期望的值相等，则给其赋予新值，否则不做任何事，但是要返回原值是多少。循环`CAS`就是在一个循环里不断的做`cas`操作，直到成功为止  
 
-![](../assets/Java线程/17273ecf71568f04.png)
+![17273ecf71568f04](../assets/Java线程/17273ecf71568f04.png)
 
 **CAS实现原子操作的三大问题** 
 1. **ABA 问题**
