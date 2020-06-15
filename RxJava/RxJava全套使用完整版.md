@@ -1,4 +1,4 @@
-`rxjava
+rxjava
 
 ## Rx介绍
 
