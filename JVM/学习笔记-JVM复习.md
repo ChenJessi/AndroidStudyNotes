@@ -102,7 +102,7 @@ https://www.oracle.com/java/technologies/javase-jdk8-doc-downloads.html
 
 栈的大小缺省为`1M`，可用参数 `-Xss` 调整大小，例如`-Xss256k`
 
-![172f8aa3df75f537](../assets/学习笔记-JVM复习/172f8aa3df75f537.png) 
+![1593651505506](../assets/学习笔记-JVM复习/1593651505506.png) 
 
 
 ##### 1.局部变量表  
@@ -153,8 +153,17 @@ https://www.oracle.com/java/technologies/javase-jdk8-doc-downloads.html
 
 线程开始调用本地方法时，会进入不受 `JVM` 约束的区域。本地方法可以通过 `jni (Java Native Interface)`来访问虚拟机运行时的数据区，甚至可以调用寄存器，具有和`jvm`相同的功能和权限，当大量本地方法出现是，势必会削弱 `jvm` 对系统的控制力，因为它的出错信息比较黑盒。 内存不足的情况下，本地方法栈还会抛出 `nativeheapOutOfMemory` 异常  
 
-`JNI` 使 `Java` 深度使用操作系统的特性功能，复用非`Java`代码，但是在项目过程中，大量使用其他语言实现 `jni`，就会丧失跨平台特性。  
+`JNI` 使 `Java` 深度使用操作系统的特性功能，复用非`Java`代码，但是在项目过程中，大量使用其他语言实现 `jni`，就会丧失跨平台特性。 
+
+
+
+![1593651636951](../assets/学习笔记-JVM复习/1593651636951.png) 
+
 ### 线程共享的区域  
+
+
+
+![1593651539763](../assets/学习笔记-JVM复习/1593651539763.png)
 
 
 #### Java堆  
@@ -166,6 +175,7 @@ https://www.oracle.com/java/technologies/javase-jdk8-doc-downloads.html
 
 `Java` 对象创建分配的内存地址和 **对象的类型和在 Java 类中存在的位置** 有关：
 `Java` 对象可以分为 基本数据类型和普通对象  
+
 1. 对于普通对象来说，`JVM`会在堆上创建对象，然后在其他地方使用的是它的引用，比如把这个对象的引用保存在虚拟机栈的局部变量表中  
 2. 对基本数据类型来说(byte、short、int、long、float、double、char、boolean)，有两种情况。 当你在方法体内声明了基本数据类型的对象，它会在栈上分配内存，其他情况都是在堆上分配。  
 
